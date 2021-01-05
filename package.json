@@ -1,0 +1,23 @@
+{
+  "name": "jswebscrapingcourse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-drocks/jswebscrapingcourse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-drocks/jswebscrapingcourse/issues"
+  },
+  "homepage": "https://github.com/alex-drocks/jswebscrapingcourse#readme",
+  "dependencies": {
+    "google-spreadsheet": "^3.1.15"
+  }
+}
