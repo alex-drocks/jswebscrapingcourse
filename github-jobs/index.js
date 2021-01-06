@@ -1,5 +1,5 @@
 //index.js
-const DB = require("../db/DB");
+const DB = require("./db/DB");
 const fetch = require("node-fetch");
 
 (async function () {

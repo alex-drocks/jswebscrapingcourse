@@ -11,7 +11,7 @@ module.exports = class DB {
     // In develop mode, use a document that contains only fake data
     this.isDevMode = !process.env.IS_DEPLOYED;
     if (this.isDevMode) {
-      const {googleSheetsIDs} = require("../db/.configs");
+      const {googleSheetsIDs} = require("../.configs");
       this.doc = new GoogleSpreadsheet(googleSheetsIDs.devSheetID);
     } else {
       this.doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS_ID);
@@ -25,7 +25,7 @@ module.exports = class DB {
 
     // Initialize Auth - see more available options at https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication
     if (this.isDevMode) {
-      const {client_email, private_key} = require("../db/.configs").gcpCredentials;
+      const {client_email, private_key} = require("../.configs").gcpCredentials;
       await this.doc.useServiceAccountAuth({client_email, private_key});
     } else {
       await this.doc.useServiceAccountAuth({

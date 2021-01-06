@@ -3,3 +3,4 @@ node_modules/
 package-lock.json
 .configs.js
 .idea/
+.credentials.js

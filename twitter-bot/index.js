@@ -5,7 +5,7 @@ const isDevMode = !process.env.IS_DEPLOYED;
 
 //connect to twitter API
 const twitterClient = new Twitter(isDevMode
-  ? require("./.configs")
+  ? require("./.credentials")
   : {
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,

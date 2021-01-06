@@ -8,7 +8,7 @@ module.exports = class DB {
   constructor(isDevMode = true) {
     // Instantiates the DB once with the unique Google Spreadsheet document ID.
     // In develop mode, use a document that contains only fake data
-    const { googleSheetsIDs } = require("./.configs");
+    const { googleSheetsIDs } = require("../../.configs");
     this.doc = new GoogleSpreadsheet(googleSheetsIDs[isDevMode ? "devSheetID" : "prodSheetID"]);
   }
 
@@ -18,7 +18,7 @@ module.exports = class DB {
     }
 
     // Initialize Auth - see more available options at https://theoephraim.github.io/node-google-spreadsheet/#/getting-started/authentication
-    const { client_email, private_key } = require("./.configs").gcpCredentials;
+    const { client_email, private_key } = require("../../.configs").gcpCredentials;
     await this.doc.useServiceAccountAuth({ client_email, private_key });
 
     await this.doc.loadInfo();
