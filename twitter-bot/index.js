@@ -1,18 +1,29 @@
 //twitter-bot/index.js
 const Twitter = require('twitter');
-const credentials = require("./.configs");
+
+const isDevMode = !process.env.IS_DEPLOYED;
+
 //connect to twitter API
-const twitterClient = new Twitter(credentials);
+const twitterClient = new Twitter(isDevMode
+  ? require("./.configs")
+  : {
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+  });
 
-const DB = require("../db/DB");
-
-const isDevMode = true;
-const db = new DB(isDevMode);
+const DB = require("./DB");
+const db = new DB();
 
 (async function postNextBibleQuote() {
   //initialize the Google Sheets DB
   await db.load();
   const sheet = db.getSheetByTitle("BibleQuotes");
+  if (!sheet) {
+    isDevMode && console.log("sheet is undefined");
+    return;
+  }
 
   //get next Bible Quote from Google sheets DB
   const bibleQuote = await getNextBibleQuote(sheet);
