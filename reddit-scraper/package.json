@@ -1,0 +1,16 @@
+{
+ "name": "reddit-scraper",
+ "version": "1.0.0",
+ "description": "",
+ "main": "index.js",
+ "scripts": {
+  "start-reddit-scraper": "node index.js"
+ },
+ "keywords": [],
+ "author": "",
+ "license": "ISC",
+ "dependencies": {
+  "puppeteer": "^5.5.0",
+  "google-spreadsheet": "^3.1.15"
+ }
+}
